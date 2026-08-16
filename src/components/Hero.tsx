@@ -89,7 +89,7 @@ export const Hero = () => {
           loop 
           muted 
           playsInline 
-          className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-multiply"
+          className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-multiply scale-[1.15] origin-top-left"
         >
           <source src="/hero-bgmeow.mp4" type="video/mp4" />
         </video>
@@ -124,12 +124,6 @@ export const Hero = () => {
           
           {/* Right: Scoreboard Visual */}
           <div className="hero-scoreboard relative flex flex-col justify-center items-center lg:justify-end lg:col-span-7 lg:translate-x-12 mt-12 lg:mt-0">
-            {/* The Live Badge */}
-            <div className="relative mb-8 lg:absolute lg:mb-0 lg:-top-8 lg:right-12 z-20 flex items-center gap-2 font-mono text-brand-text tracking-widest text-sm font-bold glass-panel px-4 py-2 rounded-full shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-brand-led-red)] shadow-[0_0_10px_rgba(255,51,51,0.8)] animate-pulse"></span>
-              LIVE / COURT 01
-            </div>
-
             {/* Rotate slightly for 3D cinematic feel with hover interaction */}
             <div className="w-[320px] sm:w-[600px] md:w-[720px] lg:w-[800px] h-[144px] sm:h-[270px] md:h-[324px] lg:h-[360px] relative flex justify-center items-center mt-12 lg:mt-0">
               <div 

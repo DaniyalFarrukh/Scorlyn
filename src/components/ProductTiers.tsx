@@ -330,7 +330,7 @@ export const ProductTiers = () => {
                       loop
                       muted
                       playsInline
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover scale-[1.15] origin-top-left"
                     >
                       <source src="/hero-bg1.mp4" type="video/mp4" />
                     </video>

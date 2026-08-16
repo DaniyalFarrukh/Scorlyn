@@ -53,11 +53,11 @@ export const Navbar = () => {
           
         </div>
 
-        {/* Action Buttons (Cart + Mobile Toggle) */}
-        <div className="flex items-center space-x-4 md:space-x-0">
+        {/* Action Buttons (Cart + Login + Mobile Toggle) */}
+        <div className="flex items-center space-x-4 md:space-x-6">
           <button 
             onClick={() => setIsCartOpen(true)}
-            className="relative p-2 text-black hover:opacity-70 transition-opacity md:ml-8"
+            className="relative p-2 text-black hover:opacity-70 transition-opacity"
             aria-label="Open Cart"
           >
             <ShoppingCart size={24} />
@@ -67,6 +67,13 @@ export const Navbar = () => {
               </span>
             )}
           </button>
+
+          <Link 
+            href="/login" 
+            className="hidden md:flex items-center justify-center bg-black text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-black/80 transition-colors"
+          >
+            Login
+          </Link>
 
           <button 
             className={`md:hidden text-black p-2`}
