@@ -52,7 +52,7 @@ export const ScoreboardDemo = () => {
     setBrightness(prev => (prev === 100 ? 25 : prev === 25 ? 50 : prev === 50 ? 75 : 100));
   };
 
-  const containerRef = React.useRef<HTMLElement>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
   
   useGSAP(() => {
     gsap.from('.demo-anim', {
