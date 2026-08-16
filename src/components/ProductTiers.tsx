@@ -26,7 +26,21 @@ const hardwareSpecs = [
   { label: "Servicing", value: "Removable rear panel" }
 ];
 
-const products = [
+interface Product {
+  id: string;
+  name: string;
+  label: string;
+  desc: string;
+  features?: string[];
+  featuresDetailed?: { title: string; desc: string }[];
+  price: string;
+  cta: string;
+  specifications: { label: string; value: string }[];
+  subtext?: string;
+  inTheBox?: string[];
+}
+
+const products: Product[] = [
   {
     id: "scorlyn",
     name: "SCORLYN",
