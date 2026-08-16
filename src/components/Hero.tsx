@@ -119,9 +119,6 @@ export const Hero = () => {
                 Get Your Scoreboard
                 <span>→</span>
               </a>
-              <a href="#product" className="glass-panel text-brand-text px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-black/5 transition-colors flex items-center justify-center w-full md:w-auto">
-                Explore Scorlyn
-              </a>
             </div>
           </div>
           
