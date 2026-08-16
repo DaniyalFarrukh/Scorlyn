@@ -31,7 +31,22 @@ export default function TalkToUs() {
       
       <div className="flex-grow flex items-center justify-center pt-32 pb-24 px-4 sm:px-6">
         <div className="w-full max-w-[700px] bg-white rounded-[2rem] p-8 md:p-16 shadow-2xl border border-black/5">
-          <h1 className="text-4xl md:text-5xl font-black mb-12 text-black tracking-tighter uppercase text-center">Send a Message</h1>
+          <h1 className="text-4xl md:text-5xl font-black mb-10 text-black tracking-tighter uppercase text-center">Get in Touch</h1>
+          
+          <a 
+            href="https://wa.me/923000000000"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full bg-[#25D366] text-white font-black uppercase tracking-widest py-5 rounded-full flex items-center justify-center gap-3 transition-all hover:brightness-105 hover:shadow-lg text-sm mb-2"
+          >
+            Chat with us on WhatsApp
+          </a>
+
+          <div className="flex items-center gap-4 my-8 opacity-50">
+            <div className="flex-1 h-px bg-black"></div>
+            <span className="font-bold text-xs uppercase tracking-widest">OR SEND A MESSAGE</span>
+            <div className="flex-1 h-px bg-black"></div>
+          </div>
           
           {status.message && (
             <div className={`mb-8 p-4 rounded-xl text-sm font-bold text-center ${status.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
