@@ -19,7 +19,7 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: 'Product', href: '/#product' },
-    { name: 'How It Works', href: '/#how-it-works' },
+    { name: 'How It Works', href: '/how-it-works' },
     { name: 'Shop', href: '/#models' },
     { name: 'Support', href: '/#faq' },
     { name: 'Talk to Us', href: '/talk-to-us' }

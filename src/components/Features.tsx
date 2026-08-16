@@ -72,7 +72,7 @@ export const Features = () => {
           else if (p >= 0.48 && p < 0.52) mode = 'Practice';
           
           if (p > 0.85 && p < 0.88) { home = "UP"; guest = "DT"; }
-          else if (p >= 0.88 && p < 0.90) { home = "DO"; guest = "NE"; }
+          else if (p >= 0.88) { home = "DO"; guest = "NE"; }
           
           updateState({ homeScore: home, guestScore: guest, bgColor: bg, mode, brightness });
         }
@@ -135,11 +135,6 @@ export const Features = () => {
       .fromTo('.s9-wrapper', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.02 }, 0.8)
       .to('.s9-wifi', { opacity: 1, scale: 1.2, duration: 0.02, yoyo: true, repeat: 3 }, 0.82)
       .to('.s9-wrapper', { opacity: 0, y: -50, duration: 0.02 }, 0.88)
-
-    // SCENE 10: Exploded View (0.9 - 1.0)
-      .to('.led-scaler', { scale: 0.5, y: -250, duration: 0.02 }, 0.9)
-      .fromTo('.s10-wrapper', { opacity: 0, y: 100 }, { opacity: 1, y: 0, duration: 0.02 }, 0.92)
-      .fromTo('.s10-item', { opacity: 0, x: -20 }, { opacity: 1, x: 0, stagger: 0.01, duration: 0.05 }, 0.94)
 
   }, { scope: containerRef });
 
@@ -311,29 +306,6 @@ export const Features = () => {
                  <p className="text-brand-text/70 text-xs md:text-sm font-medium">Over-the-air firmware updates</p>
                </div>
             </div>
-          </div>
-
-          {/* SCENE 10: Exploded View / In the Box */}
-          <div className="s10-wrapper absolute inset-0 flex flex-col justify-end pb-12 md:pb-24 opacity-0 px-6 max-w-5xl mx-auto pointer-events-auto">
-             <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-8 md:mb-12 text-brand-text text-center">What's in the Box</h2>
-             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                {[
-                  { icon: Box, title: "01 — Scoreboard" },
-                  { icon: Radio, title: "02 — Wireless Button", desc: "Paired + Battery" },
-                  { icon: Radio, title: "03 — 2x IR Sensors" },
-                  { icon: Settings2, title: "04 — Mounting Brackets", desc: "With fixings" },
-                  { icon: Zap, title: "05 — Power Lead", desc: "Plus charger" },
-                  { icon: Box, title: "06 — 1-Year Warranty" },
-                ].map((item, i) => (
-                  <div key={i} className="s10-item glass-panel p-4 md:p-6 rounded-2xl flex flex-col items-start gap-3 md:gap-4 opacity-0 translate-x-[-20px] bg-white/40 border border-brand-text/10 shadow-sm hover:shadow-md transition-shadow">
-                     <item.icon size={20} className="text-brand-text/50" />
-                     <div>
-                       <h4 className="font-black uppercase tracking-tight text-brand-text text-xs md:text-sm">{item.title}</h4>
-                       {item.desc && <p className="text-brand-text/70 text-[10px] md:text-xs font-bold mt-1 uppercase tracking-widest">{item.desc}</p>}
-                     </div>
-                  </div>
-                ))}
-             </div>
           </div>
 
         </div>

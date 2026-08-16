@@ -69,7 +69,7 @@ export const ScoreboardDemo = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} id="demo" className="py-24 md:py-32 relative overflow-hidden bg-brand-beige border-t border-black/5">
+    <div ref={containerRef} className="pt-16 pb-24 md:pb-32 relative overflow-hidden bg-transparent">
       {/* Court Background */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -177,6 +177,6 @@ export const ScoreboardDemo = () => {
 
         </div>
       </div>
-    </section>
+    </div>
   );
 };
