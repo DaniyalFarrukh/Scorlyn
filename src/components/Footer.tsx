@@ -18,7 +18,6 @@ export const Footer = () => {
             <h4 className="text-black font-bold mb-6">Product</h4>
             <ul className="space-y-4 text-sm text-gray-600">
               <li><a href="#models" className="hover:text-[var(--color-brand-accent)] hover:text-black transition-colors">Scorlyn</a></li>
-              <li><a href="#technology" className="hover:text-black transition-colors">Technology</a></li>
             </ul>
           </div>
 
@@ -26,7 +25,6 @@ export const Footer = () => {
             <h4 className="text-black font-bold mb-6">Support</h4>
             <ul className="space-y-4 text-sm text-gray-600">
               <li><a href="#faq" className="hover:text-black transition-colors">FAQ</a></li>
-              <li><a href="#" className="hover:text-black transition-colors">Warranty</a></li>
               <li><a href="#" className="hover:text-black transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -37,7 +35,7 @@ export const Footer = () => {
               <li><a href="#" className="hover:text-black transition-colors">Instagram</a></li>
               <li><a href="#" className="hover:text-black transition-colors">LinkedIn</a></li>
               <li className="pt-4">
-                <a href="mailto:hello@scorlyn.com" className="hover:text-black transition-colors">hello@scorlyn.com</a>
+                <a href="mailto:scorlynhq@gmail.com" className="hover:text-black transition-colors">scorlynhq@gmail.com</a>
               </li>
               <li>
                 <a href="tel:+1800000000" className="hover:text-black transition-colors">+1 (800) 000-0000</a>
@@ -48,10 +46,6 @@ export const Footer = () => {
 
         <div className="pt-8 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-medium">
           <p>© {new Date().getFullYear()} Scorlyn. All rights reserved.</p>
-          <div className="flex space-x-6">
-            <a href="#" className="hover:text-black transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-black transition-colors">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>

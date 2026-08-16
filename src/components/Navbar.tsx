@@ -21,7 +21,7 @@ export const Navbar = () => {
     { name: 'Product', href: '/#product' },
     { name: 'How It Works', href: '/how-it-works' },
     { name: 'Shop', href: '/#models' },
-    { name: 'Support', href: '/#faq' },
+    { name: 'FAQ', href: '/faq' },
     { name: 'Talk to Us', href: '/talk-to-us' }
   ];
 
