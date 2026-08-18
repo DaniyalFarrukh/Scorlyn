@@ -2,16 +2,47 @@
 import React, { useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { loginAdmin, loginCourt } from '@/app/actions/auth';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [loginType, setLoginType] = useState<'court' | 'admin'>('court');
+  const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsPending(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    
+    let result;
+    if (loginType === 'admin') {
+      result = await loginAdmin(formData);
+      if (result.success) {
+        router.push('/admin');
+        return; // Don't set isPending false on redirect
+      }
+    } else {
+      result = await loginCourt(formData);
+      if (result.success) {
+        router.push('/court');
+        return;
+      }
+    }
+
+    setError(result.message || 'Login failed');
+    setIsPending(false);
+  };
 
   return (
-    <main className="bg-brand-cream text-black font-sans min-h-screen pt-32 pb-12 flex flex-col">
+    <main className="bg-[var(--color-brand-beige)] text-black font-sans min-h-screen flex flex-col">
       <Navbar />
       
-      <div className="flex-grow flex items-center justify-center px-4 py-8 md:py-12">
-        <div className="w-full max-w-md bg-white rounded-[2rem] p-6 sm:p-8 md:p-12 shadow-sm border border-black/5 hover:-translate-y-1 transition-transform">
+      <div className="flex-grow flex items-center justify-center pt-32 pb-24 px-4 sm:px-6">
+        <div className="w-full max-w-[500px] bg-white rounded-[2rem] p-8 md:p-12 shadow-2xl border border-black/5 hover:-translate-y-1 transition-transform">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-black uppercase tracking-tight mb-2">Welcome Back</h1>
             <p className="text-gray-500 font-medium">Log in to your {loginType === 'court' ? 'court' : 'admin'} portal</p>
@@ -22,26 +53,34 @@ export default function LoginPage() {
               className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-full shadow-sm transition-transform duration-300 ease-out ${loginType === 'admin' ? 'translate-x-[calc(100%+4px)]' : 'translate-x-0'}`}
             ></div>
             <button 
-              onClick={() => setLoginType('court')}
+              type="button"
+              onClick={() => { setLoginType('court'); setError(null); }}
               className={`flex-1 py-3 text-xs sm:text-sm font-bold uppercase tracking-widest relative z-10 transition-colors ${loginType === 'court' ? 'text-black' : 'text-gray-400 hover:text-gray-600'}`}
             >
               Court Login
             </button>
             <button 
-              onClick={() => setLoginType('admin')}
+              type="button"
+              onClick={() => { setLoginType('admin'); setError(null); }}
               className={`flex-1 py-3 text-xs sm:text-sm font-bold uppercase tracking-widest relative z-10 transition-colors ${loginType === 'admin' ? 'text-black' : 'text-gray-400 hover:text-gray-600'}`}
             >
               Admin Login
             </button>
           </div>
           
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            {error && (
+              <div className="p-4 rounded-xl text-sm font-bold text-center bg-red-100 text-red-800">
+                {error}
+              </div>
+            )}
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Email Address</label>
               <input 
+                name="email"
                 type="email" 
-                className="w-full bg-gray-50 border border-black/10 rounded-xl px-4 py-3 outline-none focus:border-[var(--color-brand-accent)] focus:bg-white transition-colors"
-                placeholder="admin@club.com"
+                className="w-full bg-gray-50 border border-black/10 rounded-xl px-4 py-3 outline-none focus:border-black focus:bg-white transition-colors"
+                placeholder="admin@scorlyn.pk"
                 required
               />
             </div>
@@ -49,8 +88,9 @@ export default function LoginPage() {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Password</label>
               <input 
+                name="password"
                 type="password" 
-                className="w-full bg-gray-50 border border-black/10 rounded-xl px-4 py-3 outline-none focus:border-[var(--color-brand-accent)] focus:bg-white transition-colors"
+                className="w-full bg-gray-50 border border-black/10 rounded-xl px-4 py-3 outline-none focus:border-black focus:bg-white transition-colors"
                 placeholder="••••••••"
                 required
               />
@@ -64,8 +104,12 @@ export default function LoginPage() {
               <a href="#" className="hover:text-black transition-colors w-full sm:w-auto text-left sm:text-right">Forgot password?</a>
             </div>
 
-            <button type="button" className="w-full bg-black text-white font-black uppercase tracking-widest py-4 rounded-full hover:bg-black/80 hover:shadow-lg transition-all mt-4 text-sm">
-              Sign In
+            <button 
+              type="submit" 
+              disabled={isPending}
+              className="w-full bg-black text-white font-black uppercase tracking-widest py-4 rounded-full hover:bg-black/80 hover:shadow-lg disabled:opacity-50 transition-all mt-4 text-sm"
+            >
+              {isPending ? 'Signing In...' : 'Sign In'}
             </button>
           </form>
           
