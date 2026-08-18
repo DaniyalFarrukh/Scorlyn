@@ -35,35 +35,48 @@ export async function sendEmailAction(formData: FormData) {
 
     // Email to Scorlyn HQ
     const adminMailOptions = {
-      from: `"${name}" <${GMAIL_USER}>`,
+      from: `"Scorlyn Website" <${GMAIL_USER}>`,
       replyTo: email,
       to: GMAIL_USER,
       subject: `New Contact Form Submission: ${helpReason}`,
+      text: `New Message from Scorlyn Website\n\nReason: ${helpReason}\nName: ${name}\nEmail: ${email}\nPhone: ${fullPhone}\nLocation: ${location}\n\nProject Details:\n${projectDetails}`,
       html: `
-        <h2>New Message from Scorlyn Website</h2>
-        <p><strong>Reason:</strong> ${helpReason}</p>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${fullPhone}</p>
-        <p><strong>Location:</strong> ${location}</p>
-        <br/>
-        <h3>Project Details:</h3>
-        <p>${projectDetails.replace(/\n/g, '<br/>')}</p>
+        <!DOCTYPE html>
+        <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+          <h2>New Message from Scorlyn Website</h2>
+          <p><strong>Reason:</strong> ${helpReason}</p>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${fullPhone}</p>
+          <p><strong>Location:</strong> ${location}</p>
+          <br/>
+          <h3>Project Details:</h3>
+          <p>${projectDetails.replace(/\n/g, '<br/>')}</p>
+        </body>
+        </html>
       `,
     };
 
     // Auto-reply to Client
     const clientMailOptions = {
       from: `"Scorlyn HQ" <${GMAIL_USER}>`,
+      replyTo: GMAIL_USER,
       to: email,
       subject: `Thank you for contacting Scorlyn!`,
+      text: `Hello ${name},\n\nThank you for reaching out to Scorlyn. We have received your message regarding your ${helpReason} inquiry.\n\nOur team is reviewing your project details and will get back to you shortly.\n\nBest regards,\nThe Scorlyn Team`,
       html: `
-        <h2>Hello ${name},</h2>
-        <p>Thank you for reaching out to Scorlyn. We have received your message regarding your ${helpReason} inquiry.</p>
-        <p>Our team is reviewing your project details and will get back to you shortly.</p>
-        <br/>
-        <p>Best regards,</p>
-        <p><strong>The Scorlyn Team</strong></p>
+        <!DOCTYPE html>
+        <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+          <h2>Hello ${name},</h2>
+          <p>Thank you for reaching out to Scorlyn. We have received your message regarding your ${helpReason} inquiry.</p>
+          <p>Our team is reviewing your project details and will get back to you shortly.</p>
+          <br/>
+          <p>Best regards,</p>
+          <p><strong>The Scorlyn Team</strong></p>
+        </body>
+        </html>
       `,
     };
 

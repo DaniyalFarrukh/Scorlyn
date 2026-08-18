@@ -14,14 +14,15 @@ export default function TalkToUs() {
     setIsPending(true);
     setStatus({});
     
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const result = await sendEmailAction(formData);
     
     setStatus(result);
     setIsPending(false);
 
     if (result.success) {
-      e.currentTarget.reset();
+      form.reset();
     }
   };
 
